@@ -76,7 +76,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
     * */
     List<Player> gamer_list;//玩家列表
     long game_group;//限定一局游戏只能在一个群里开（懒得写多个群的了23333
-    long admin = 1543127579;//管理员，默认是开发者23333
+    long admin = 1010834103;//管理员，默认是开发者23333
     int response_amount = 0;//响应人数，用于在南蛮入侵与万箭齐发进行判定
     int alive_amount = 0;//存活人数，用于与上一个进行配套判定
     int alive_rebel_amount = 0;//存活反贼数量
@@ -239,7 +239,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                         objectId = Integer.valueOf(args[3]);
                         if(objectId<0||objectId>4)
                         {
-                            cq.sendPrivateMsg(userId,"目标玩家不存在>  <!",false);
+                            cq.sendPrivateMsg(userId,"目标玩家不存在!",false);
                             return MESSAGE_BLOCK;
                         }
                         if(args.length>4)
@@ -274,7 +274,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                         player.card_list.remove(card);
                     }
                     else
-                        cq.sendPrivateMsg(userId,"卡牌使用失败>  <！",false);
+                        cq.sendPrivateMsg(userId,"卡牌使用失败！",false);
                     return MESSAGE_BLOCK;
                 }
                 catch (Exception e)
@@ -287,7 +287,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             if(args[1].equals("end"))
             {
                 endRound(cq,player);
-                cq.sendPrivateMsg(userId,"回合结束>  <！",false);
+                cq.sendPrivateMsg(userId,"回合结束！",false);
                 return MESSAGE_BLOCK;
             }
             if(args[1].equals("load"))
@@ -321,7 +321,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                         player.card_list.remove(card);
                     }
                     else
-                        cq.sendPrivateMsg(userId,"装备装载失败>  <！",false);
+                        cq.sendPrivateMsg(userId,"装备装载失败！",false);
                     return MESSAGE_BLOCK;
                 }
                 catch (Exception e)
@@ -343,9 +343,9 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                     int card_num = Integer.parseInt(args[2]);
                     boolean success = unloadEquip(cq,player,card_num);
                     if(success)
-                        cq.sendPrivateMsg(userId,"装备丢弃成功>  <！",false);
+                        cq.sendPrivateMsg(userId,"装备丢弃成功！",false);
                     else
-                        cq.sendPrivateMsg(userId,"装备丢弃失败>  <！可能你并没有这个装备>  <！",false);
+                        cq.sendPrivateMsg(userId,"装备丢弃失败！可能你并没有这个装备！",false);
                     return MESSAGE_BLOCK;
                 }
                 catch (Exception e)
@@ -392,12 +392,12 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             {
                 if(is_running)
                 {
-                    cq.sendGroupMsg(groupId,"已经有一场游戏在运行了，请等待该场游戏结束>  <！",false);
+                    cq.sendGroupMsg(groupId,"已经有一场游戏在运行了，请等待该场游戏结束！",false);
                     return MESSAGE_BLOCK;
                 }
                 is_running = true;
-                cq.sendGroupMsg(groupId,"欢迎使用arttnba3开发的三国杀插件！新的一轮三国杀即将开启>  <！",false);
-                cq.sendGroupMsg(groupId,"等待玩家加入中...\n请使用/kingdom join指令加入游戏>  <",false);
+                cq.sendGroupMsg(groupId,"该三国杀插件由arttnba3开发~新的一轮三国杀即将开启！",false);
+                cq.sendGroupMsg(groupId,"等待玩家加入中...\n请使用/kingdom join指令加入游戏",false);
                 game_group = groupId;
                 refreshData();
                 return MESSAGE_BLOCK;
@@ -406,12 +406,12 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             {
                 if(!is_running)
                 {
-                    cq.sendGroupMsg(groupId,"游戏还没开始哦>  <!",false);
+                    cq.sendGroupMsg(groupId,"游戏还没开始哦!",false);
                     return MESSAGE_BLOCK;
                 }
                 if(gamer_list.size()>5)
                 {
-                    cq.sendGroupMsg(groupId,"人数已经达到上限啦>  <!",false);
+                    cq.sendGroupMsg(groupId,"人数已经达到上限啦!",false);
                     return MESSAGE_BLOCK;
                 }
                 if(userId == 80000000L)
@@ -424,7 +424,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                     long gamerId = gamer_list.get(i).userId;
                     if(gamerId == userId)
                     {
-                        cq.sendGroupMsg(groupId,"不能重复加入游戏>  <!",false);
+                        cq.sendGroupMsg(groupId,"不能重复加入游戏!",false);
                         return MESSAGE_BLOCK;
                     }
                 }
@@ -436,13 +436,13 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             }
             if(args[1].equals("stop"))
             {
-                if(userId!=1543127579L)
+                if(userId!=1010834103L)
                 {
                     cq.sendGroupMsg(groupId,"Permission denied, authorization limited.",false);
                     return MESSAGE_BLOCK;
                 }
                 resetData();
-                cq.sendGroupMsg(groupId,"游戏被管理员强行停止>  <！",false);
+                cq.sendGroupMsg(groupId,"游戏被管理员强行停止！",false);
             }
             if(args[1].equals("check"))
             {
@@ -451,7 +451,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             }
             if (args[1].equals("next"))
             {
-                if(userId!=1543127579L)
+                if(userId!=1010834103L)
                 {
                     cq.sendGroupMsg(groupId,"Permission denied, authorization limited.",false);
                     return MESSAGE_BLOCK;
@@ -494,7 +494,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
     {
         if(!player.enable)
         {
-            cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+            cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
             return false;
         }
         if(card.type<TYPE_WEAPON)
@@ -535,7 +535,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
     {
         if(!player.enable)
         {
-            cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+            cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
             return false;
         }
         boolean success = false;
@@ -741,7 +741,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
         if(player.job==JOB_KING)
         {
             is_running = false;
-            cq.sendGroupMsg(game_group,"主公阵亡，游戏结束>  <！",false);
+            cq.sendGroupMsg(game_group,"主公阵亡，游戏结束！",false);
             cq.sendGroupMsg(game_group,"最后的获胜阵营是："+(alive_rebel_amount==0?"内奸":"反贼"),false);
             cq.sendGroupMsg(game_group,"输入/kingdom new开启新的一局游戏！",false);
             resetData();
@@ -763,7 +763,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
         if(alive_rebel_amount==0&&alive_spy_amount==0)
         {
             is_running = false;
-            cq.sendGroupMsg(game_group,"反贼与内奸全部阵亡，游戏结束>  <！",false);
+            cq.sendGroupMsg(game_group,"反贼与内奸全部阵亡，游戏结束！",false);
             cq.sendGroupMsg(game_group,"最后的获胜阵营是：主公&忠臣",false);
             cq.sendGroupMsg(game_group,"输入/kingdom new开启新的一局游戏！",false);
             resetData();
@@ -913,7 +913,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             case CARD_DRINK:
                 if(player.drunk)
                 {
-                    cq.sendPrivateMsg(player.userId,"你已经喝过酒啦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"你已经喝过酒啦！",false);
                     return false;
                 }
                 if(player.being_dead)//濒死阶段打出酒
@@ -925,7 +925,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 }
                 if(!player.enable)
                 {
-                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
                     return false;
                 }
                 player.drunk = true;
@@ -942,7 +942,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 }
                 if(!player.enable)
                 {
-                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
                     return false;
                 }
                 if(objectId == NONE_OBJECT)
@@ -983,7 +983,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 int killing_distance = (player.weapon == null || player.weapon.name == CARD_UNLIMITED_WEAPON)?1:(player.weapon.name-CARD_ADD_ONE_WEAPON+1);
                 if(distance>killing_distance)
                 {
-                    cq.sendPrivateMsg(player.userId,"anosa...距离太远你杀不到他哦>  <...",false);
+                    cq.sendPrivateMsg(player.userId,"anosa...距离太远你杀不到他哦...",false);
                     return false;
                 }
                 cq.sendGroupMsg(game_group,"玩家"+ CQCode.at(player.userId)+"对"+CQCode.at(the_killed.userId)
@@ -992,14 +992,14 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                         ,false);
                 if(card.color%2==0&&the_killed.armor!=null&&the_killed.armor.name==CARD_SHIELD)
                 {
-                    cq.sendGroupMsg(game_group,"由于对方玩家装备了仁王盾，本次杀无效>  <！",false);
-                    cq.sendPrivateMsg(player.userId,"由于对方玩家装备了仁王盾，本次杀无效>  <！",false);
+                    cq.sendGroupMsg(game_group,"由于对方玩家装备了仁王盾，本次杀无效！",false);
+                    cq.sendPrivateMsg(player.userId,"由于对方玩家装备了仁王盾，本次杀无效！",false);
                     return false;
                 }
                 if(card.name == CARD_KILL&&the_killed.armor!=null&&the_killed.armor.name == CARD_GRASS_ARMOR)
                 {
-                    cq.sendGroupMsg(game_group,"由于对方玩家装备了藤甲，本次杀无效>  <！",false);
-                    cq.sendPrivateMsg(player.userId,"由于对方玩家装备了藤甲，本次杀无效>  <！",false);
+                    cq.sendGroupMsg(game_group,"由于对方玩家装备了藤甲，本次杀无效！",false);
+                    cq.sendPrivateMsg(player.userId,"由于对方玩家装备了藤甲，本次杀无效！",false);
                     return false;
                 }
                 cq.sendPrivateMsg(player.userId,"使用成功！等待对方玩家反应中...",false);
@@ -1031,7 +1031,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                         damageAll(cq);
                 }
                 cq.sendPrivateMsg(player.userId,"成功",false);
-                cq.sendGroupMsg(game_group,"玩家"+CQCode.at(player.userId)+"打出了一张闪>  <",false);
+                cq.sendGroupMsg(game_group,"玩家"+CQCode.at(player.userId)+"打出了一张闪",false);
                 return true;
             case CARD_PEACH:
                 if(objectId == NONE_OBJECT)
@@ -1041,14 +1041,14 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 }
                 if(gamer_list.get(objectId).is_dead)
                 {
-                    cq.sendPrivateMsg(player.userId,"你不能对死人使用🍑>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"你不能对死人使用🍑！",false);
                     return false;
                 }
                 if(!player.enable)
                 {
                     if(!gamer_list.get(objectId).being_dead)
                     {
-                        cq.sendPrivateMsg(player.userId,"非出牌阶段你只能对濒死的人使用桃>  <！",false);
+                        cq.sendPrivateMsg(player.userId,"非出牌阶段你只能对濒死的人使用桃！",false);
                         return false;
                     }
                 }
@@ -1056,7 +1056,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 {
                     if(!gamer_list.get(objectId).being_dead)
                     {
-                        cq.sendPrivateMsg(player.userId,"你只能对自己或濒死的人使用桃>  <！",false);
+                        cq.sendPrivateMsg(player.userId,"你只能对自己或濒死的人使用桃！",false);
                         return false;
                     }
                 }
@@ -1069,7 +1069,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             case CARD_SO_HAPPY:
                 if(!player.enable)
                 {
-                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
                     return false;
                 }
                 if(objectId == NONE_OBJECT)
@@ -1079,7 +1079,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 }
                 if(gamer_list.get(objectId).is_dead)
                 {
-                    cq.sendPrivateMsg(player.userId,"目标玩家已经死了>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"目标玩家已经死了！",false);
                     return false;
                 }
                 gamer_list.get(objectId).strategy_list.add(card);
@@ -1090,7 +1090,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             case CARD_GET_A_SHEEP:
                 if(!player.enable)
                 {
-                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
                     return false;
                 }
                 if(objectId == NONE_OBJECT)
@@ -1101,7 +1101,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 Player object = gamer_list.get(objectId);
                 if(object.is_dead)
                 {
-                    cq.sendPrivateMsg(player.userId,"目标玩家已经死了>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"目标玩家已经死了！",false);
                     return false;
                 }
                 Card card2;
@@ -1109,7 +1109,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                 {
                     if(object.card_list.size()==0)
                     {
-                        cq.sendPrivateMsg(player.userId,"目标玩家没有手牌>  <！",false);
+                        cq.sendPrivateMsg(player.userId,"目标玩家没有手牌！",false);
                         return false;
                     }
                     int card_index = random.nextInt(object.card_list.size());
@@ -1140,7 +1140,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
                     }
                     else
                     {
-                        cq.sendPrivateMsg(player.userId,"卡牌不存在>  <!",false);
+                        cq.sendPrivateMsg(player.userId,"卡牌不存在!",false);
                         return false;
                     }
                 }
@@ -1154,7 +1154,7 @@ public class LegendsOfThreeKingdomPlugin extends SuperPlugin
             case CARD_GET_TWO_CARD:
                 if(!player.enable)
                 {
-                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦>  <！",false);
+                    cq.sendPrivateMsg(player.userId,"还没到你的出牌时间哦！",false);
                     return false;
                 }
                 player.card_list.add(getCard());

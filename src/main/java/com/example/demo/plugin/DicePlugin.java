@@ -3,46 +3,25 @@ package com.example.demo.plugin;
 import a3lib.SuperPlugin;
 import net.lz1998.cq.event.message.CQGroupMessageEvent;
 import net.lz1998.cq.event.message.CQPrivateMessageEvent;
-import net.lz1998.cq.robot.CQPlugin;
 import net.lz1998.cq.robot.CoolQ;
-import net.lz1998.cq.utils.CQCode;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Component
-public class RollPlugin extends SuperPlugin
-{
-    List places_to_eat = new ArrayList();
+public class DicePlugin extends SuperPlugin {
     Random r = new Random();
-    String message = "用法：/roll {选项}\n其中多余的选项会被忽略\n当前可选选项有：\ndice\nmeal\nboom";
-    int turn = 1;
+    String message = "用法：/dice [🎲面数] [🎲个数](如果无面数默认6面(最大为1000面)，无个数默认1个(最大为100个))";
 
-    public RollPlugin()
-    {
-        plugin_name = "RollPlugin";
-        try
-        {
-            FileInputStream fileInputStream = new FileInputStream(new File("data/dining_hall_list.txt"));
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-            int ch;
-            String place = bufferedReader.readLine();
-            while(place != null)
-            {
-                places_to_eat.add(place);
-                place = bufferedReader.readLine();
-            }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+    public DicePlugin(){
+        plugin_name = "RollDice";
     }
-
     @Override
     public int onPrivateMessage(CoolQ cq, CQPrivateMessageEvent event)
     {
@@ -60,22 +39,42 @@ public class RollPlugin extends SuperPlugin
 
         String msg = event.getMessage();
         long group_id = event.getGroupId();
-        if(msg.length()<5)
-            return MESSAGE_IGNORE;
-        if(msg.equals("/roll"))
+        /*if(msg.length()<5)
+            return MESSAGE_IGNORE;*/
+        if(msg.equals("/dice help"))
         {
             cq.sendGroupMsg(group_id, message,false);
             return MESSAGE_BLOCK;
         }
-        if(msg.substring(0,5).equals("/roll"))
+        if(msg.substring(0,5).equals("/dice"))
         {
             String[] args = msg.split(" ");
-            if(args.length<2)
+            if(args.length==1)
             {
-                cq.sendGroupMsg(group_id, message,false);
+                int point = r.nextInt(6);
+                cq.sendGroupMsg(group_id,"你扔了 1 个 6 面🎲，其点数为 "+String.valueOf(point+1)+"",false);
                 return MESSAGE_BLOCK;
             }
-            switch(args[1])
+            if(args.length == 2 && Integer.parseInt(args[1])>0 && Integer.parseInt(args[1])<=1000 ){
+                int bound = Integer.parseInt(args[1]);
+                int point = r.nextInt(Integer.parseInt(args[1]));
+                cq.sendGroupMsg(group_id,"你扔了 1 个 "+bound+" 面🎲，其点数为 "+String.valueOf(point+1),false);
+                return MESSAGE_BLOCK;
+            }
+            if(args.length == 3 && Integer.parseInt(args[1])>0 && Integer.parseInt(args[1])<=100 && Integer.parseInt(args[2])>1 && Integer.parseInt(args[2])<=100){
+                int bound = Integer.parseInt(args[1]);
+                int num = Integer.parseInt(args[2]);
+                String out = "";
+                int sum = 0;
+                for(int i=0; i<num; i++){
+                    int point = r.nextInt(bound) + 1;
+                    out = out.concat(String.valueOf(point) + " ");
+                    sum += point;
+                }
+                cq.sendGroupMsg(group_id,"你扔了 " + num + " 个 "+bound+ " 面🎲\n" + "其点数分别为：" + out +"\n" + "总和为: " + sum, false);
+                return  MESSAGE_BLOCK;
+            }
+            /*switch(args[1])
             {
                 case "dice":
                     int point = r.nextInt(6);
@@ -86,10 +85,6 @@ public class RollPlugin extends SuperPlugin
                         return MESSAGE_BLOCK;
                     }
                     cq.sendGroupMsg(group_id,"你掷出的点数O.O是： " + String.valueOf(point+1),false);
-                    return MESSAGE_BLOCK;
-                case "meal":
-                    int index = r.nextInt(places_to_eat.size());
-                    cq.sendGroupMsg(group_id,"呐呐，今天我们一起去"+places_to_eat.get(index)+"恰饭叭",false);
                     return MESSAGE_BLOCK;
                 case "boom":
                     int alive = r.nextInt(10);
@@ -105,7 +100,7 @@ public class RollPlugin extends SuperPlugin
                 default:
                     cq.sendGroupMsg(group_id, message,false);
                     return MESSAGE_BLOCK;
-            }
+            }*/
         }
         return MESSAGE_IGNORE;
     }

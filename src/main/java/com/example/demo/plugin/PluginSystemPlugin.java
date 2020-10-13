@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class PluginSystemPlugin extends CQPlugin
 {
-    long admin = 1543127579L;
+    long admin = 1010834103L;
     List permission_list = new ArrayList<Long>();
     File file = null;
     FileInputStream fileInputStream = null;

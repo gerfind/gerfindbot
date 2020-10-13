@@ -51,7 +51,7 @@ public class TeachMsgPlugin extends SuperPlugin
         {
             if(msg.equals("/teach"))
             {
-                cq.sendGroupMsg(group_id,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略\n注：机器人会不定期重启清空被教授的内容O.O",false);
+                cq.sendGroupMsg(group_id,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略\n注：机器人会不定期重启清空被教授的内容",false);
                 return MESSAGE_BLOCK;
             }
             else if(map.containsKey(msg))
@@ -64,7 +64,7 @@ public class TeachMsgPlugin extends SuperPlugin
         if(msg.equals("/teach save"))
         {
             long userId = event.getUserId();
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(group_id,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
@@ -90,7 +90,7 @@ public class TeachMsgPlugin extends SuperPlugin
         if(msg.equals("/teach load"))
         {
             long userId = event.getUserId();
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(group_id,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
@@ -127,11 +127,11 @@ public class TeachMsgPlugin extends SuperPlugin
             }
             if(map.containsKey(args[1]))
             {
-                cq.sendGroupMsg(group_id,"anosa...我已经学过这个了哟...",false);
+                cq.sendGroupMsg(group_id,"但是...我已经学过这个了哟...",false);
                 return MESSAGE_BLOCK;
             }
             map.put(args[1],args[2]);
-            cq.sendGroupMsg(group_id,"呐，我学会了哟，你呢w",false);
+            cq.sendGroupMsg(group_id,"我学会了呢，你呢w",false);
             return MESSAGE_BLOCK;
         }
         else if(msg.substring(0,7).equals("/delete"))
@@ -150,12 +150,12 @@ public class TeachMsgPlugin extends SuperPlugin
             if(map.containsKey(args[1]))
             {
                 map.remove(args[1]);
-                cq.sendGroupMsg(group_id,"anosa..我好像...忘了点什么...",false);
+                cq.sendGroupMsg(group_id,"我好像...忘了点什么...",false);
                 return MESSAGE_BLOCK;
             }
             else
             {
-                cq.sendGroupMsg(group_id,"呐，我还没学过这个呀，不如你先教我好啦",false);
+                cq.sendGroupMsg(group_id,"我还没学过这个呐，不如你先教我好啦",false);
                 return MESSAGE_BLOCK;
             }
         }
@@ -190,7 +190,7 @@ public class TeachMsgPlugin extends SuperPlugin
         }
         if(msg.equals("/teach save"))
         {
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(userId,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
@@ -215,7 +215,7 @@ public class TeachMsgPlugin extends SuperPlugin
         }
         if(msg.equals("/teach load"))
         {
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendPrivateMsg(userId,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
@@ -252,11 +252,11 @@ public class TeachMsgPlugin extends SuperPlugin
             }
             if(map.containsKey(args[1]))
             {
-                cq.sendPrivateMsg(userId,"anosa...我已经学过这个了哟...",false);
+                cq.sendPrivateMsg(userId,"但是...我已经学过这个了哟...",false);
                 return MESSAGE_BLOCK;
             }
             map.put(args[1],args[2]);
-            cq.sendPrivateMsg(userId,"呐，我学会了哟，你呢w",false);
+            cq.sendPrivateMsg(userId,"我学会了，你呢w",false);
             return MESSAGE_BLOCK;
         }
         else if(msg.substring(0,7).equals("/delete"))
@@ -275,12 +275,12 @@ public class TeachMsgPlugin extends SuperPlugin
             if(map.containsKey(args[1]))
             {
                 map.remove(args[1]);
-                cq.sendPrivateMsg(userId,"anosa..我好像...忘了点什么...",false);
+                cq.sendPrivateMsg(userId,"我好像...忘了点什么...",false);
                 return MESSAGE_BLOCK;
             }
             else
             {
-                cq.sendPrivateMsg(userId,"呐，我还没学过这个呀，不如你先教我好啦",false);
+                cq.sendPrivateMsg(userId,"我还没学过这个呐，不如你先教我好啦",false);
                 return MESSAGE_BLOCK;
             }
         }

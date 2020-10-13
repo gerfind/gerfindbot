@@ -32,7 +32,7 @@ public class EnglishSignInPlugin extends SuperPlugin
     public EnglishSignInPlugin()
     {
         plugin_name = "EnglishSignInPlugin";
-        admin_list.add(1543127579L);admin_list.add(1066235869L);
+        admin_list.add(1010834103L);
         clock_in_list = new HashMap<Long,ArrayList>();//group_id to  groupInfo[0] for on/off, 1 for times, 2 for Hashmap<student_id, ArrayList<times, today_in>>, 3 for today_times
     }
 

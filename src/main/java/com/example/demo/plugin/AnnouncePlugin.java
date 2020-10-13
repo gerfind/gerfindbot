@@ -82,7 +82,7 @@ public class AnnouncePlugin extends SuperPlugin
         }
         if(msg_list[1].equals("save"))
         {
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(groupId,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
@@ -107,7 +107,7 @@ public class AnnouncePlugin extends SuperPlugin
         }
         if(msg_list[1].equals("load"))
         {
-            if(userId != 1543127579L)
+            if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(groupId,"Permission denied, authorization limited.",false);
                 return MESSAGE_BLOCK;
