@@ -17,6 +17,7 @@ spring:
       - com.example.demo.plugin.LegendsOfThreeKingdomPlugin
       - com.example.demo.plugin.EnglishSignInPlugin
       - com.example.demo.plugin.SignInPlugin
+      - com.example.demo.plugin.MCPlugin
       - com.example.demo.plugin.DicePlugin
       - com.example.demo.plugin.BoomPlugin
       - com.example.demo.plugin.MealPlugin

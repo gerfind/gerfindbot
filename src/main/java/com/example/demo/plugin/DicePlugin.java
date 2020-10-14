@@ -46,7 +46,7 @@ public class DicePlugin extends SuperPlugin {
             cq.sendGroupMsg(group_id, message,false);
             return MESSAGE_BLOCK;
         }
-        if(msg.substring(0,5).equals("/dice"))
+        if(msg.length ()>4&&msg.substring(0,5).equals("/dice"))
         {
             String[] args = msg.split(" ");
             if(args.length==1)
