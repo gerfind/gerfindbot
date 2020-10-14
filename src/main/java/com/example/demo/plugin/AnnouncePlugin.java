@@ -53,7 +53,7 @@ public class AnnouncePlugin extends SuperPlugin
         String[] msg_list = msg.split(" ");
         if(!msg_list[0].equals("/announce")||msg.length()<2)
             return MESSAGE_IGNORE;
-        if(userId != 1543127579)
+        if(userId != 1010834103L)
         {
             cq.sendGroupMsg(groupId,"Permission denied, authorizathion limited.",false);
             return MESSAGE_BLOCK;

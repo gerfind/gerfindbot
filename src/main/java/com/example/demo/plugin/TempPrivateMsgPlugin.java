@@ -29,7 +29,7 @@ public class TempPrivateMsgPlugin extends SuperPlugin
             cq.sendPrivateMsg(user_id,"anosa...你发的这个指令我无法理解呢O.O",false);
         else
         {
-            cq.sendPrivateMsg(user_id,"呐呐，这里是由arttnba3开发的QQ机器人a3bot，哟",false);
+            cq.sendPrivateMsg(user_id,"呐呐，这里是QQ机器人哟(arttnba3)",false);
             has_met_for_the_first_time.add(user_id);
         }
         return MESSAGE_IGNORE;

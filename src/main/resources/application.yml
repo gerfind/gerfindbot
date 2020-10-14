@@ -9,6 +9,7 @@ spring:
     plugin-list:
       - com.example.demo.plugin.CompatPlugin
       - com.example.demo.plugin.TeachMsgPlugin
+      - com.example.demo.plugin.HitokotoPlugin
       - com.example.demo.plugin.AnnouncePlugin
       - com.example.demo.plugin.PluginSystemPlugin
       - com.example.demo.plugin.AntiSbPlugin
