@@ -52,12 +52,12 @@ public class TeachMsgPlugin extends SuperPlugin
             if(msg.equals("/teach"))
             {
                 cq.sendGroupMsg(group_id,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略\n注：机器人会不定期重启清空被教授的内容",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             else if(map.containsKey(msg))
             {
                 cq.sendGroupMsg(group_id,(String)map.get(msg),false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             return MESSAGE_IGNORE;
         }
@@ -67,7 +67,7 @@ public class TeachMsgPlugin extends SuperPlugin
             if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(group_id,"Permission denied, authorization limited.",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             try
             {
@@ -85,7 +85,7 @@ public class TeachMsgPlugin extends SuperPlugin
             {
                 e.printStackTrace();
             }
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         if(msg.equals("/teach load"))
         {
@@ -93,7 +93,7 @@ public class TeachMsgPlugin extends SuperPlugin
             if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(group_id,"Permission denied, authorization limited.",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             try
             {
@@ -102,7 +102,7 @@ public class TeachMsgPlugin extends SuperPlugin
                 {
                     file.createNewFile();
                     cq.sendGroupMsg(group_id,"数据文件不存在",false);
-                    return MESSAGE_BLOCK;
+                    return MESSAGE_IGNORE;
                 }
                 InputStream inputStream = new FileInputStream(file);
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
@@ -115,7 +115,7 @@ public class TeachMsgPlugin extends SuperPlugin
             {
                 e.printStackTrace();
             }
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         if(msg.substring(0,7).equals("/teach "))
         {
@@ -123,46 +123,46 @@ public class TeachMsgPlugin extends SuperPlugin
             if(args.length<3)
             {
                 cq.sendGroupMsg(group_id,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             if(map.containsKey(args[1]))
             {
                 cq.sendGroupMsg(group_id,"但是...我已经学过这个了哟...",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             map.put(args[1],args[2]);
             cq.sendGroupMsg(group_id,"我学会了呢，你呢w",false);
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         else if(msg.substring(0,7).equals("/delete"))
         {
             if(msg.equals("/delete"))
             {
                 cq.sendGroupMsg(group_id,"用法：/delete {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             String[] args = msg.split(" ");
             if(args.length<2)
             {
                 cq.sendGroupMsg(group_id,"用法：/delete {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             if(map.containsKey(args[1]))
             {
                 map.remove(args[1]);
                 cq.sendGroupMsg(group_id,"我好像...忘了点什么...",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             else
             {
                 cq.sendGroupMsg(group_id,"我还没学过这个呐，不如你先教我好啦",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
         }
         else if(map.containsKey(msg))
         {
             cq.sendGroupMsg(group_id,(String)map.get(msg),false);
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         return MESSAGE_IGNORE;
     }
@@ -179,12 +179,12 @@ public class TeachMsgPlugin extends SuperPlugin
             if(msg.equals("/teach"))
             {
                 cq.sendPrivateMsg(userId,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略\n注：机器人会不定期重启清空被教授的内容O.O",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             else if(map.containsKey(msg))
             {
                 cq.sendPrivateMsg(userId,(String)map.get(msg),false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             return MESSAGE_IGNORE;
         }
@@ -193,7 +193,7 @@ public class TeachMsgPlugin extends SuperPlugin
             if(userId != 1010834103L)
             {
                 cq.sendGroupMsg(userId,"Permission denied, authorization limited.",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             try
             {
@@ -211,14 +211,14 @@ public class TeachMsgPlugin extends SuperPlugin
             {
                 e.printStackTrace();
             }
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         if(msg.equals("/teach load"))
         {
             if(userId != 1010834103L)
             {
                 cq.sendPrivateMsg(userId,"Permission denied, authorization limited.",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             try
             {
@@ -227,7 +227,7 @@ public class TeachMsgPlugin extends SuperPlugin
                 {
                     file.createNewFile();
                     cq.sendPrivateMsg(userId,"数据文件不存在",false);
-                    return MESSAGE_BLOCK;
+                    return MESSAGE_IGNORE;
                 }
                 InputStream inputStream = new FileInputStream(file);
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
@@ -240,7 +240,7 @@ public class TeachMsgPlugin extends SuperPlugin
             {
                 e.printStackTrace();
             }
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         if(msg.substring(0,7).equals("/teach "))
         {
@@ -248,46 +248,46 @@ public class TeachMsgPlugin extends SuperPlugin
             if(args.length<3)
             {
                 cq.sendPrivateMsg(userId,"用法：/teach {msg} {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             if(map.containsKey(args[1]))
             {
                 cq.sendPrivateMsg(userId,"但是...我已经学过这个了哟...",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             map.put(args[1],args[2]);
             cq.sendPrivateMsg(userId,"我学会了，你呢w",false);
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         else if(msg.substring(0,7).equals("/delete"))
         {
             if(msg.equals("/delete"))
             {
                 cq.sendPrivateMsg(userId,"用法：/delete {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             String[] args = msg.split(" ");
             if(args.length<2)
             {
                 cq.sendPrivateMsg(userId,"用法：/delete {msg}\n多余的输入项会被自动忽略",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             if(map.containsKey(args[1]))
             {
                 map.remove(args[1]);
                 cq.sendPrivateMsg(userId,"我好像...忘了点什么...",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
             else
             {
                 cq.sendPrivateMsg(userId,"我还没学过这个呐，不如你先教我好啦",false);
-                return MESSAGE_BLOCK;
+                return MESSAGE_IGNORE;
             }
         }
         else if(map.containsKey(msg))
         {
             cq.sendPrivateMsg(userId,(String)map.get(msg),false);
-            return MESSAGE_BLOCK;
+            return MESSAGE_IGNORE;
         }
         return MESSAGE_IGNORE;
     }

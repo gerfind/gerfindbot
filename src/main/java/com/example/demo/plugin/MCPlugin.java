@@ -45,7 +45,7 @@ public class MCPlugin extends SuperPlugin {
             String ip_port = "";
             try{ ip_port = args[1]; }
             catch (Exception e){
-                ip_port = "";
+                ip_port = "47.100.139.109:25500";
             }
             try
             {
